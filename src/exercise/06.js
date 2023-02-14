@@ -1,29 +1,15 @@
 // useEffect: HTTP requests
-// 💯 create an ErrorBoundary component
-// http://localhost:3000/isolated/final/06.extra-4.js
+// 💯 use react-error-boundary
+// http://localhost:3000/isolated/final/06.extra-6.js
 
 import * as React from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
 import {
   fetchPokemon,
   PokemonInfoFallback,
   PokemonForm,
   PokemonDataView,
 } from '../pokemon'
-
-class ErrorBoundary extends React.Component {
-  state = { error: null }
-  static getDerivedStateFromError(error) {
-    return { error }
-  }
-  render() {
-    const { error } = this.state
-    if (error) {
-      return <this.props.FallbackComponent error={error} />
-    }
-
-    return this.props.children
-  }
-}
 
 function PokemonInfo({ pokemonName }) {
   const [state, setState] = React.useState({
@@ -83,7 +69,7 @@ function App() {
       <PokemonForm pokemonName={pokemonName} onSubmit={handleSubmit} />
       <hr />
       <div className="pokemon-info">
-        <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <ErrorBoundary key={pokemonName} FallbackComponent={ErrorFallback}>
           <PokemonInfo pokemonName={pokemonName} />
         </ErrorBoundary>
       </div>
@@ -92,4 +78,3 @@ function App() {
 }
 
 export default App
-
