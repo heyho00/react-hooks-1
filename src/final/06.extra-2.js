@@ -10,7 +10,7 @@ import {
   PokemonDataView,
 } from '../pokemon'
 
-function PokemonInfo({pokemonName}) {
+function PokemonInfo({ pokemonName }) {
   const [status, setStatus] = React.useState('idle')
   const [pokemon, setPokemon] = React.useState(null)
   const [error, setError] = React.useState(null)
@@ -40,7 +40,7 @@ function PokemonInfo({pokemonName}) {
     return (
       <div>
         There was an error:{' '}
-        <pre style={{whiteSpace: 'normal'}}>{error.message}</pre>
+        <pre style={{ whiteSpace: 'normal' }}>{error.message}</pre>
       </div>
     )
   } else if (status === 'resolved') {
