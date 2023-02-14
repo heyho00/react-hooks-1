@@ -9,7 +9,7 @@ import {
   PokemonDataView,
 } from '../pokemon'
 
-function PokemonInfo({pokemonName}) {
+function PokemonInfo({ pokemonName }) {
   const [pokemon, setPokemon] = React.useState(null)
 
   React.useEffect(() => {
